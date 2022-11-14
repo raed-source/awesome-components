@@ -30,23 +30,47 @@ export class ComplexFormComponent implements OnInit {
     this.initFormObservables();
   }
   private initFormObservables() {
-    this.showEmailCtrl$=this.contactPreferenceCtrl.valueChanges.pipe(
-      startWith(this.contactPreferenceCtrl.value),
-      map(preferenc=>preferenc==='email')
+    this.showEmailCtrl$ = this.contactPreferenceCtrl.valueChanges.pipe(
+        startWith(this.contactPreferenceCtrl.value),
+        map(preference => preference === 'email'),
+        tap(showEmailCtrl => this.setEmailValidators(showEmailCtrl))
     );
-    this.showPhoneCtrl$=this.contactPreferenceCtrl.valueChanges.pipe(
-      startWith(this.contactPreferenceCtrl.value),
-      map(preference=>preference==='phone'),
-      tap(showPhoneCtrl=>{
-        if(showPhoneCtrl){
-this.phoneCtrl.addValidators([Validators.required,Validators.minLength(10),Validators.maxLength(10)])
-        }else{
-this.phoneCtrl.clearValidators();
-        }
-        this.phoneCtrl.updateValueAndValidity();
-      })
-    )
+    this.showPhoneCtrl$ = this.contactPreferenceCtrl.valueChanges.pipe(
+        startWith(this.contactPreferenceCtrl.value),
+        map(preference => preference === 'phone'),
+        tap(showPhoneCtrl => this.setPhoneValidators(showPhoneCtrl))
+    );
+}
+private setEmailValidators(showEmailCtrl: boolean) {
+  if (showEmailCtrl) {
+      this.emailCtrl.addValidators([
+          Validators.required,
+          Validators.email
+      ]);
+      this.confirmEmailCtrl.addValidators([
+          Validators.required,
+          Validators.email
+      ]);
+  } else {
+      this.emailCtrl.clearValidators();
+      this.confirmEmailCtrl.clearValidators();
   }
+  this.emailCtrl.updateValueAndValidity();
+  this.confirmEmailCtrl.updateValueAndValidity();
+}
+
+private setPhoneValidators(showPhoneCtrl: boolean) {
+  if (showPhoneCtrl) {
+      this.phoneCtrl.addValidators([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10)
+      ]);
+  } else {
+      this.phoneCtrl.clearValidators();
+  }
+  this.phoneCtrl.updateValueAndValidity();
+}
   private initFormControls() {
 this.personalInfoForm=this.formBuilder.group({
   firstName:['',Validators.required],
