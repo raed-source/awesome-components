@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, Observable, startWith, tap } from 'rxjs';
+import { catchError, map, Observable, startWith, switchMap, tap } from 'rxjs';
 import { ComplexFormService } from '../../services/complex-form.service';
 
 @Component({
@@ -126,6 +126,7 @@ onSubmitForm() {
       tap(saved => {
           this.loading = false;
           if (saved) {
+
             this.resetForm();
             } else {
             console.error('Echec de l\'enregistrement');
@@ -136,4 +137,6 @@ onSubmitForm() {
     this.mainForm.reset();
     this.contactPreferenceCtrl.patchValue('email');
   }
+
+
 }
