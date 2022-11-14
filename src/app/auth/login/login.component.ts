@@ -11,7 +11,7 @@ import { catchError, EMPTY, tap } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;
+  mainForm!: FormGroup;
   loading!: boolean;
   errorMsg!: string;
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this.mainForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required]
     });
@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.loading = true;
-    const email = this.loginForm.get('email')!.value;
-    const password = this.loginForm.get('password')!.value;
+    const email = this.mainForm.get('email')!.value;
+    const password = this.mainForm.get('password')!.value;
     this.auth.loginUser(email, password).pipe(
       tap(() => {
         this.loading = false;
