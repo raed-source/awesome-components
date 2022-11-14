@@ -1,63 +1,72 @@
 <mat-card [formGroup]="mainForm" class="main-form">
   <mat-card-title>Inscription</mat-card-title>
+
   <mat-card class="form-card" formGroupName="personalInfo">
-    <mat-card-subtitle>Informationss personnelles</mat-card-subtitle>
+    <mat-card-subtitle>Informations Personnelles</mat-card-subtitle>
     <div class="form-row">
-      <mat-form-field appearence="fill">
+      <mat-form-field appearance="fill">
         <mat-label>Prénom</mat-label>
-        <input type="text" matInput formControlName="firstName">
+        <input type="text" matInput formControlName="firstName" />
       </mat-form-field>
-      <mat-form-field appearence="fill">
+      <mat-form-field appearance="fill">
         <mat-label>Nom</mat-label>
-        <input type="text" matInput formControlName="lastName">
+        <input type="text" matInput formControlName="lastName" />
       </mat-form-field>
     </div>
   </mat-card>
-  <mat-card class="form-card" [formControl]="contactPreferenceCtrl">
-    <mat-card-subtitle>Comment préférez-vous que l'on vous contacte ?</mat-card-subtitle>
-    <mat-radio-group>
-      <mat-radio-button value="email">Mail</mat-radio-button>
-      <mat-radio-button value="phone">Téléphone</mat-radio-button>
+
+  <mat-card class="form-card">
+    <mat-card-subtitle>Comment préférez-vous etre contacté</mat-card-subtitle>
+    <mat-radio-group [formControl]="contactPreferenceCtrl">
+      <mat-radio-button value="email">Email</mat-radio-button>
+      <mat-radio-button value="phone">Phone</mat-radio-button>
     </mat-radio-group>
   </mat-card>
-  <mat-card class="form-card" [formGroup]="emailForm">
+
+  <mat-card class="form-card" [formGroup]="emailForm" *ngIf="showEmailCtrl$ | async">
     <mat-card-subtitle>Email</mat-card-subtitle>
     <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Adresse mail</mat-label>
-        <input type="text" matInput formControlName="email">
+        <input type="text" matInput formControlName="email" />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Confirmer votre adresse mail</mat-label>
-        <input type="text" matInput formControlName="confirm">
+        <input type="text" matInput formControlName="confirm" />
       </mat-form-field>
     </div>
   </mat-card>
-  <mat-card class="form-card">
+  <mat-card class="form-card" *ngIf="showPhoneCtrl$ | async">
     <mat-card-subtitle>Téléphone</mat-card-subtitle>
-    <mat-form-field appearance="fill">
-      <mat-label>Numéro de téléphone</mat-label>
-      <input type="text" matInput [formControl]="phoneCtrl">
-    </mat-form-field>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Numéro de téléphon</mat-label>
+        <input type="text" matInput [formControl]="phoneCtrl" />
+      </mat-form-field>
+    </div>
   </mat-card>
   <mat-card class="form-card" [formGroup]="loginInfoForm">
-    <mat-card-subtitle>Informations de connexion</mat-card-subtitle>
-    <mat-form-field appearance="fill">
-      <mat-label>Nom d'utilisateur</mat-label>
-      <input type="text" matInput formControlName="username">
-    </mat-form-field>
+    <mat-card-subtitle>Information de connexion</mat-card-subtitle>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Nom d'utilisature</mat-label>
+        <input type="text" matInput formControlName="username" />
+      </mat-form-field>
+    </div>
     <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Mot de passe</mat-label>
-        <input type="password" matInput formControlName="password">
+        <input type="password" matInput formControlName="password" />
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Confirmer votre mot de passe</mat-label>
-        <input type="password" matInput formControlName="confirmPassword">
+        <mat-label>Confirmer le mot de passe</mat-label>
+        <input type="password" matInput formControlName="confirmPassword" />
       </mat-form-field>
     </div>
   </mat-card>
   <mat-card-actions *ngIf="mainForm.valid">
-    <button mat-flat-button color="primary" (click)="onSubmitForm()">ENREGISTRER</button>
+    <button mat-flat-button color="primary" (click)="onSubmitForm()">
+      ENREGISTRER
+    </button>
   </mat-card-actions>
 </mat-card>
