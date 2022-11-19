@@ -9,7 +9,12 @@ import{MatFormFieldModule} from '@angular/material/form-field';
 import{MatInputModule}from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+<<<<<<< HEAD
 // import{MatProgressSpinnerModule} from'@angular/material/progress-spinner;
+=======
+import{MatProgressSpinnerModule} from'@angular/material/progress-spinner';
+
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
 @NgModule({
   declarations: [],
   imports: [
@@ -25,7 +30,11 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatCheckboxModule,
     MatRadioModule,
+<<<<<<< HEAD
     // MatProgressSpinnerModule
+=======
+    MatProgressSpinnerModule
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
   ]
 })
 export class MaterialModule { }

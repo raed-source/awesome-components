@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
   <span>Awesome Components</span>
   <ul>
+    <li><a routerLink="signup" routerLinkActive="active" *ngIf="!(isAuth$ | async)">SIGN UP</a></li>
+    <li><a routerLink="login" routerLinkActive="active" *ngIf="!(isAuth$ | async)">LOGIN</a></li>
+    <li><a (click)="onLogout()" *ngIf="isAuth$ | async">LOGOUT </a></li>
     <li><a routerLink="/social-media">Social Media</a></li>
     <li><a routerLink="/complex-form"> Form d'inscription</a></li>
     <li><a routerLink="/reactive-state">Reactive State</a></li>

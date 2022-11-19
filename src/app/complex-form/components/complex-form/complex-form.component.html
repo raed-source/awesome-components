@@ -7,12 +7,19 @@
       <mat-form-field appearance="fill">
         <mat-label>Prénom</mat-label>
         <input type="text" matInput formControlName="firstName" />
+<<<<<<< HEAD
         <mat-error>Ce champ est requis</mat-error>
+=======
+        <mat-error>ce champ est requis</mat-error>
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Nom</mat-label>
         <input type="text" matInput formControlName="lastName" />
+<<<<<<< HEAD
         <mat-error>Ce champ est requis</mat-error>
+=======
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
       </mat-form-field>
     </div>
   </mat-card>
@@ -25,11 +32,15 @@
     </mat-radio-group>
   </mat-card>
 
+<<<<<<< HEAD
   <mat-card
     class="form-card"
     [formGroup]="emailForm"
     *ngIf="showEmailCtrl$ | async"
   >
+=======
+  <mat-card class="form-card" [formGroup]="emailForm" *ngIf="showEmailCtrl$ | async">
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
     <mat-card-subtitle>Email</mat-card-subtitle>
     <div class="form-row">
       <mat-form-field appearance="fill">
@@ -42,9 +53,12 @@
         <input type="text" matInput formControlName="confirm" />
         <mat-error>{{ getFormControlErrorText(confirmEmailCtrl) }}</mat-error>
       </mat-form-field>
+<<<<<<< HEAD
       <small class="error-text" *ngIf="showEmailError$ | async">
         Les deux adresses ne correspond pas</small
       >
+=======
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
     </div>
   </mat-card>
   <mat-card class="form-card" *ngIf="showPhoneCtrl$ | async">
@@ -54,6 +68,10 @@
         <mat-label>Numéro de téléphon</mat-label>
         <input type="text" matInput [formControl]="phoneCtrl" />
         <mat-error>{{ getFormControlErrorText(phoneCtrl) }}</mat-error>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
       </mat-form-field>
     </div>
   </mat-card>
@@ -64,6 +82,10 @@
         <mat-label>Nom d'utilisature</mat-label>
         <input type="text" matInput formControlName="username" />
         <mat-error>Ce champ est requis</mat-error>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
       </mat-form-field>
     </div>
     <div class="form-row">
@@ -71,18 +93,32 @@
         <mat-label>Mot de passe</mat-label>
         <input type="password" matInput formControlName="password" />
         <mat-error>Ce champ est requis</mat-error>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Confirmer le mot de passe</mat-label>
         <input type="password" matInput formControlName="confirmPassword" />
         <mat-error>Ce champ est requis</mat-error>
+<<<<<<< HEAD
       </mat-form-field>
     </div>
     <small class="error-text" *ngIf="showPasswordError$ | async"></small>
   </mat-card>
   <mat-card-actions *ngIf="mainForm.valid">
     <button mat-flat-button color="primary" (click)="onSubmitForm()">
+=======
+
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <mat-card-actions *ngIf="mainForm.valid">
+    <button mat-flat-button color="primary" (click)="onSubmitForm()" [disabled]="loading">
+>>>>>>> ce816209bdf599dc7ae0ac4ec32c56108afb9e48
       ENREGISTRER
     </button>
   </mat-card-actions>
+  <mat-spinner *ngIf="loading" color="primary" mode="indeterminate"></mat-spinner>
 </mat-card>

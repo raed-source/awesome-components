@@ -1,0 +1,23 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<mat-card [formGroup]="mainForm" class="main-form">
+  <mat-card-title>Connexion</mat-card-title>
+
+  <mat-card class="form-card">
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Adresse mail</mat-label>
+        <input type="text" matInput formControlName="email" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mot de pass</mat-label>
+        <input type="password" matInput formControlName="password" />
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <mat-card-actions *ngIf="mainForm.valid">
+    <button mat-flat-button color="primary" (click)="onLogin()" [disabled]="loading">
+      ENREGISTRER
+    </button>
+  </mat-card-actions>
+  <mat-spinner *ngIf="loading" color="primary" mode="indeterminate"></mat-spinner>
+</mat-card>
