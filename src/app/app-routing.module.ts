@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './core/components/header/header.component';
 
 const routes: Routes = [
   { path: 'social-media', loadChildren: () => import('./social-media/social-media.module').then(m => m.SocialMediaModule) },
   { path: 'complex-form', loadChildren: () => import('./complex-form/complex-form.module').then(m => m.ComplexFormModule) },
-  { path: '**', redirectTo: 'social-media'}
+  { path: 'reactive-state', loadChildren: () => import('./reactive-state/reactive-state.module').then(m => m.ReactiveStateModule) },
+  { path: '**', redirectTo: 'social-media'},
+  // {path:'',component:HeaderComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

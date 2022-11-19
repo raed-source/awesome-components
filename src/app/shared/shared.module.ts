@@ -29,7 +29,7 @@ import { HighlightDirective } from './directives/hightlight.directive';
     UsernamePipe,
     TimeAgoPipe,
     HighlightDirective,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule { }
